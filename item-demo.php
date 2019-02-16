@@ -64,32 +64,30 @@ function showForm()
 	<script type="text/javascript">
 		function checkForm(thisForm)
 		{//check form data for valid info
-			if(empty(thisForm.YourName,"Please Enter Your Name")){return false;}
+			if(empty(thisForm.YourName,"Please Enter Amount Of Order")){return false;}
 			return true;//if all is passed, submit!
 		}
 	</script>
 	<h3 align="center">' . smartTitle() . '</h3>
 	<p align="center">Please enter your name</p> 
 	<form action="' . THIS_PAGE . '" method="post" onsubmit="return checkForm(this);">
-             ';
-  
-    
-		foreach($config->items as $item)
-          {
-            //echo "<p>ID:$item->ID  Name:$item->Name</p>"; 
-            //echo '<p>Taco <input type="text" name="item_1" /></p>';
+    ';
+      
+	foreach($config->items as $item)
+    {
+        //echo "<p>ID:$item->ID  Name:$item->Name</p>"; 
+        //echo '<p>Taco <input type="text" name="item_1" /></p>';
               
-              echo '<p>' . $item->Name . ' <input type="text" name="item_' . $item->ID . '" /></p>';
+        echo '<p>' . $item->Name . ' <input type="text" name="item_' . $item->ID . '" /></p>';
               
-          }       
+    }       
  
-          echo '
-				<p>
-					<input type="submit" value="Please Enter Your Name"><em>(<font color="red"><b>*</b> required field</font>)</em>
+        echo '
+			    <p>
+					<input type="submit" value="Please Enter Amount Of Order"><em>(<font color="red"><b>*</b> required field</font>)</em>
 				</p>
-		<input type="hidden" name="act" value="display" />
-	</form>
-	';
+		        <input type="hidden" name="act" value="display" />
+	         </form>';
 	get_footer(); #defaults to footer_inc.php
 }
 
@@ -97,9 +95,8 @@ function showData()
 {#form submits here we show entered name
 	
     //dumpDie($_POST);
-     get_header(); #defaults to footer_inc.php
-	
-	
+    get_header(); #defaults to footer_inc.php
+		
 	echo '<h3 align="center">' . smartTitle() . '</h3>';
 	
 	foreach($_POST as $name => $value)
@@ -135,20 +132,13 @@ function showData()
 				and create subtotals, etc.
 			
 			*/
-            //echo "<p>You ordered $value of item number $id</p>";
-            
+            //echo "<p>You ordered $value of item number $id</p>";            
         }
-        
-        
-
+                
     }
-	
-	
-	
-	
+				
 	echo '<p align="center"><a href="' . THIS_PAGE . '">RESET</a></p>';
-	get_footer(); #defaults to footer_inc.php
-    
+	get_footer(); #defaults to footer_inc.php    
 }
 
 function getItem($id)
@@ -158,9 +148,7 @@ function getItem($id)
     /*
     we need to loop the items
     if we find the item with an id that matches
-    the argument, return the object
-    
-    
+    the argument, return the object        
     */
 
     foreach($config->items as $item)
@@ -169,28 +157,9 @@ function getItem($id)
     //echo '<p>Taco <input type="text" name="item_1" /></p>';
         if((int)$id == (int)$item->ID)
         {// bingo! this is our item, return it
-            return $item;
-            
+            return $item;            
         }
 
     }     
 }//end of foreach
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
